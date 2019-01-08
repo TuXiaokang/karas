@@ -45,7 +45,7 @@ class TensorBoard(extension.Extension):
                     continue
 
             if 'scalar' in tag:
-                self._writer.add_scalar(tag, value, 4, global_step=step)
+                self._writer.add_scalar(tag, value, global_step=step)
             elif 'images' in tag:
                 self._writer.add_image(tag, value.cpu().numpy(), global_step=step)
             pass
