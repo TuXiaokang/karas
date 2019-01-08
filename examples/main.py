@@ -36,7 +36,7 @@ loaders['test'] = DataLoader(MNIST('../data', train=False, download=True,
                                        # transforms.Normalize((0.1307,), (0.3081,))
                                    ])))
 
-keys = ['epoch', 'iteration', 'loss', 'net/lr', 'test/accuracy', 'elapsed_time']
+keys = ['epoch', 'iteration', 'loss', 'test/net/lr', 'test/accuracy', 'elapsed_time']
 
 device = torch.device('cpu')
 net = Net().to(device)
@@ -53,7 +53,7 @@ trainer.extend(Eval(), priority=PRIORITY_WRITER, trigger=(1, 'epoch'))
 trainer.extend(LogReport(keys), trigger=(100, 'iteration'))
 trainer.extend(TensorBoard(), trigger=(10, 'iteration'))
 trainer.extend(PrintReport(keys), trigger=(100, 'iteration'))
-trainer.extend(LrObserver(), trigger=(1, 'epoch'))
+trainer.extend(LrObserver(), trigger=(100, 'iteration'))
 trainer.extend(LrScheduler(lr_scheduler.StepLR(opt, step_size=2, gamma=0.5)), trigger=(1, 'epoch'))
 trainer.extend(ProgressBar(update_interval=10))
 

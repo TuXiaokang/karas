@@ -65,11 +65,14 @@ class PrintReport(extension.Extension):
             if os.name == 'nt':
                 utils.erase_console(0, 0)
             else:
+                out.write('\033[1A')
                 out.write('\033[J')
             self._print(log[log_len])
             log_len += 1
         self._log_len = log_len
-        # out.write(self._header)
+
+        if os.name != 'nt':
+            out.write(self._header)
 
 
     def _print(self, observation):

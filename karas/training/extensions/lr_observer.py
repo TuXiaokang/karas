@@ -12,6 +12,5 @@ class LrObserver(extension.Extension):
 
         for key, optimizer in optimizers.items():
             lr = optimizer.param_groups[0]['lr']
-
             with reporter.scope('scalar'):
                 reporter.report({'{}/lr'.format(key): lr})
