@@ -7,4 +7,6 @@ karas.egg-info/*
 output/*
 logdir/*
 test/*
+examples/logdir
+examples/output
 karas.iml

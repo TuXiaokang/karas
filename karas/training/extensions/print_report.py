@@ -45,6 +45,7 @@ class PrintReport(extension.Extension):
     def __call__(self, trainer):
 
         out = self._out
+
         if self._show_header:
             out.write(self._header)
             self._show_header = False
@@ -60,6 +61,7 @@ class PrintReport(extension.Extension):
         log_len = self._log_len
         while len(log) > log_len:
             # delete the printed contents from the current cursor
+            # out.write('\033[1A')
             if os.name == 'nt':
                 utils.erase_console(0, 0)
             else:
@@ -67,6 +69,8 @@ class PrintReport(extension.Extension):
             self._print(log[log_len])
             log_len += 1
         self._log_len = log_len
+        # out.write(self._header)
+
 
     def _print(self, observation):
         out = self._out
