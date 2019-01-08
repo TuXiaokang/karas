@@ -1,0 +1,10 @@
+.vscode/
+.idea/
+build/*
+data/*
+dist/*
+karas.egg-info/*
+output/*
+logdir/*
+test/*
+karas.iml
