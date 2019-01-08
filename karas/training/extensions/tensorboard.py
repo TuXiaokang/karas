@@ -41,10 +41,11 @@ class TensorBoard(extension.Extension):
                     if compare_key(key, tag):
                         haskey = True
                         break;
-            if self._keys is not None and not haskey: continue
+                if not haskey:
+                    continue
 
             if 'scalar' in tag:
-                self._writer.add_scalar(tag, round(value, 4), global_step=step)
+                self._writer.add_scalar(tag, value, 4, global_step=step)
             elif 'images' in tag:
                 self._writer.add_image(tag, value.cpu().numpy(), global_step=step)
             pass
