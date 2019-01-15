@@ -48,6 +48,8 @@ class Reporter(object):
                 name = '%s/%s' % (self.namespace, key)
             else:
                 name = key
+            if isinstance(value, torch.Tensor):
+                value = value.detach().cpu()
             self.observation[name] = value
 
     def reset(self):

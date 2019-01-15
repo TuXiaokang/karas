@@ -5,6 +5,7 @@ class Updater(object):
         assert isinstance(self.optimizers, dict)
 
     def __call__(self, trainer):
+        self.trainer = trainer
         self.reporter = trainer.reporter
         return self
 

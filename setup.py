@@ -12,7 +12,7 @@ setup(
     long_description="A chainer-like trainer framework for pytorch users.",
     license="MIT Licence",
 
-    url="http://karas.com",
+    url="https://github.com/TuXiaokang/karas.git",
     author="Xiaokang Tu",
     author_email="xiaokang.tu@qq.com",
 
