@@ -40,7 +40,13 @@ class EarlyStoppingTrigger(object):
         if self.max_trigger(trainer):
             return True
 
-        if self.monitor not in observation.keys():
+        find_key = False
+        for tag, value in observation.items():
+            if compare_key(self.monitor, tag):
+                find_key = True
+                break
+
+        if not find_key:
             if self.verbose:
                 warnings.warn('{} is not in observation'.format(self.monitor))
             return False
