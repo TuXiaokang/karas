@@ -1,6 +1,7 @@
 import operator
 
 import karas.reporter as reporter
+from karas import compare_key
 from karas.training.triggers import utils
 
 
@@ -18,7 +19,7 @@ class BestValueTrigger(object):
         summary = self._summary
 
         for key in observation.keys():
-            if self.key in key:
+            if compare_key(self.key, key):
                 summary.add({self.key: observation[key]})
 
         if not self.interval_trigger(trainer):
