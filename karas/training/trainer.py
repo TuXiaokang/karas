@@ -145,7 +145,8 @@ class Trainer(object):
         for _, entry in extensions:
             initialize = getattr(entry, 'initialize', None)
             if initialize:
-                initialize(self)
+                with self.reporter.scope('test'):
+                    initialize(self)
 
         self._start_at = _get_time()
 
